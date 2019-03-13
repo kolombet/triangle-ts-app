@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addTriangle } from "../actions/index";
 import { isInvalid } from "../triangle/validations";
+import Button from "./Button";
+import ErrorMessage from "./ErrorMessage";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -10,18 +12,29 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-class ErrorMessage extends React.PureComponent {
+class TriangleSideInput extends React.PureComponent {
   render() {
+    const isError = this.props.val < 0;
     return (
-      <dl className="ts-errors">
-        <dt>Triangle is invalid</dt>
-        <dd>Entered sides do not form a real triangle</dd>
-      </dl>
+      <label>
+        <span>{this.props.label}</span>
+        <input
+          required
+          type="number"
+          className="form-control"
+          id={this.props.id}
+          value={this.props.val}
+          onChange={this.props.onValueChange}
+        />
+        {isError && (
+          <ErrorMessage title="Triangle sides size must be positive" />
+        )}
+      </label>
     );
   }
 }
 
-class ConnectedForm extends Component {
+class AddTriangleForm extends Component {
   constructor() {
     super();
     this.state = this.getInitialState();
@@ -39,6 +52,8 @@ class ConnectedForm extends Component {
 
   handleChange(event) {
     const value = parseFloat(event.target.value);
+    const id = event.target.id;
+    console.log("test");
     this.setState({ [event.target.id]: value });
   }
 
@@ -52,68 +67,47 @@ class ConnectedForm extends Component {
 
   render() {
     const { sideA, sideB, sideC } = this.state;
-    const isError = isInvalid(sideA, sideB, sideC);
+    const isEmpty = sideA === "" && sideB === "" && sideC === "";
+    const isError = !isEmpty && isInvalid(sideA, sideB, sideC);
     return (
       <form data-ts="Form" onSubmit={this.handleSubmit}>
         <fieldset>
-          <label>
-            <span>Side A:</span>
-            <input
-              required
-              type="number"
-              className="form-control"
-              id="sideA"
-              value={sideA}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            <span>Side B:</span>
-            <input
-              required
-              type="number"
-              className="form-control"
-              id="sideB"
-              value={sideB}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            <span>Side C:</span>
-            <input
-              required
-              type="number"
-              className="form-control"
-              id="sideC"
-              value={sideC}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TriangleSideInput
+            label="Side A:"
+            id="sideA"
+            val={sideA}
+            onValueChange={this.handleChange}
+          />
+          <TriangleSideInput
+            label="Side B:"
+            id="sideB"
+            val={sideB}
+            onValueChange={this.handleChange}
+          />
+          <TriangleSideInput
+            label="Side C:"
+            id="sideC"
+            val={sideC}
+            onValueChange={this.handleChange}
+          />
         </fieldset>
-
-        {isError ? (
+        {isError && (
           <div>
-            <ErrorMessage />
-            <button
-              disabled="disabled"
-              data-ts="Button"
-              type="submit"
-              className="ts-primary"
-            >
-              ADD TRIANGLE
-            </button>
+            <ErrorMessage
+              title="Triangle is invalid"
+              description="Entered sides do not form a real triangle"
+            />
           </div>
-        ) : (
-          <button data-ts="Button" type="submit" className="ts-primary">
-            ADD TRIANGLE
-          </button>
         )}
+        <Button disabled={isError} title="Add Triangle" />
       </form>
     );
   }
 }
+
 const Form = connect(
   null,
   mapDispatchToProps
-)(ConnectedForm);
+)(AddTriangleForm);
+
 export default Form;

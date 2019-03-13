@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import {
-  clearTriangles,
-  addTriangle,
-  addRandomTriangle
-} from "../actions/index";
+import { clearTriangles, addRandomTriangle } from "../actions/index";
+import Button from "./Button";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -13,11 +10,15 @@ function mapDispatchToProps(dispatch) {
     clearTriangles: () => dispatch(clearTriangles())
   };
 }
+
 class ControlBar extends Component {
   constructor() {
     super();
     this.handleRandomClick = this.handleRandomClick.bind(this);
     this.handleClearClick = this.handleClearClick.bind(this);
+    setTimeout(() => {
+      this.props.addRandomTriangle();
+    }, 100);
   }
 
   handleRandomClick(event) {
@@ -26,29 +27,17 @@ class ControlBar extends Component {
   }
 
   handleClearClick() {
-    console.log("clear click");
     this.props.clearTriangles();
   }
 
   render() {
     return (
       <div className="control-bar">
-        <button
-          data-ts="Button"
-          type="submit"
-          className="ts-primary"
+        <Button
           onClick={this.handleRandomClick}
-        >
-          Create random triangle
-        </button>
-        <button
-          data-ts="Button"
-          type="submit"
-          className="ts-primary"
-          onClick={this.handleClearClick}
-        >
-          Clear list
-        </button>
+          title="Create randome triangle"
+        />
+        <Button onClick={this.handleClearClick} title="Clear list" />
       </div>
     );
   }
