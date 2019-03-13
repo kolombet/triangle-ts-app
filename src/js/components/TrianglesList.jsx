@@ -12,11 +12,6 @@ const mapStateToProps = state => {
   return { triangles: state.triangles };
 };
 
-const formatTriangleData = triangle =>
-  `Sides A=${triangle.sideA} B=${triangle.sideB} C=${triangle.sideC} Type: ${
-    triangle.types
-  }`;
-
 const formatTypes = types => types.join(", ").toLowerCase();
 
 class TrianglesList extends React.PureComponent {

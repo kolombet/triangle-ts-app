@@ -1,13 +1,7 @@
-import * as validations from "./validations";
+import { getValidations } from "./validations";
 import uuidv1 from "uuid";
 import { Random } from "random-js";
-
-const INVALID = "INVALID";
-const EQUILATERAL = "EQUILATERAL";
-const ISOSCELES = "ISOSCELES";
-const SCALENE = "SCALENE";
-const RIGHT = "RIGHT";
-const PYTHAGOREAN = "PYTHAGOREAN";
+import * as types from "./triangleTypes";
 
 export class Triangle {
   /**
@@ -53,25 +47,14 @@ export class Triangle {
     const rand = () => new Random().integer(1, 5);
     const createRandomTriangle = () => new Triangle(id, rand(), rand(), rand());
     let triangle = createRandomTriangle();
-    while (triangle.getTypes().indexOf(INVALID) !== -1) {
+    while (triangle.getTypes().indexOf(types.INVALID) !== -1) {
       triangle = createRandomTriangle();
     }
     return triangle;
   }
 
-  getValidations() {
-    return {
-      INVALID: validations.isInvalid,
-      EQUILATERAL: validations.isEquilateral,
-      ISOSCELES: validations.isIsosceles,
-      RIGHT: validations.isRightAngled,
-      SCALENE: validations.isScalene,
-      PYTHAGOREAN: validations.isPythagorean
-    };
-  }
-
   getTypes() {
-    const validations = this.getValidations();
+    const validations = getValidations();
     const keys = Object.keys(validations);
     const { sideA, sideB, sideC } = this.get;
     return keys.filter(validation =>

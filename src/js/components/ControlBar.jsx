@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import uuidv1 from "uuid";
 import { clearTriangles, addRandomTriangle } from "../actions/index";
 import Button from "./Button";
+import styled from "styled-components";
+
+const HorizontalLayout = styled.p`
+  display: flex;
+  flex-direction: row;
+`;
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -22,7 +27,6 @@ class ControlBar extends Component {
   }
 
   handleRandomClick(event) {
-    const id = uuidv1();
     this.props.addRandomTriangle();
   }
 
@@ -32,13 +36,13 @@ class ControlBar extends Component {
 
   render() {
     return (
-      <div className="control-bar">
+      <HorizontalLayout>
         <Button
           onClick={this.handleRandomClick}
           title="Create randome triangle"
         />
         <Button onClick={this.handleClearClick} title="Clear list" />
-      </div>
+      </HorizontalLayout>
     );
   }
 }

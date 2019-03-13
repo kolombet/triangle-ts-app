@@ -52,8 +52,6 @@ class AddTriangleForm extends Component {
 
   handleChange(event) {
     const value = parseFloat(event.target.value);
-    const id = event.target.id;
-    console.log("test");
     this.setState({ [event.target.id]: value });
   }
 
@@ -92,12 +90,10 @@ class AddTriangleForm extends Component {
           />
         </fieldset>
         {isError && (
-          <div>
-            <ErrorMessage
-              title="Triangle is invalid"
-              description="Entered sides do not form a real triangle"
-            />
-          </div>
+          <ErrorMessage
+            title="Triangle is invalid"
+            description="Entered sides do not form a real triangle"
+          />
         )}
         <Button disabled={isError} title="Add Triangle" />
       </form>

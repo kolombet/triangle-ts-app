@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-export default class ErrorMessage extends React.PureComponent {
+export default class ErrorMessage extends PureComponent {
   render() {
     return (
       <dl className="ts-errors">

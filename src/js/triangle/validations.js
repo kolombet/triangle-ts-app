@@ -1,3 +1,5 @@
+import * as types from "./triangleTypes";
+
 export const isIsosceles = (sideA, sideB, sideC) => {
   return (
     (sideA === sideB && sideC !== sideA) ||
@@ -37,4 +39,15 @@ export const isInvalid = (sideA, sideB, sideC) => {
     sideA >= sideB + sideC || sideC >= sideB + sideA || sideB >= sideA + sideC;
 
   return isInvalid || isImpossible;
+};
+
+export const getValidations = () => {
+  const validations = {};
+  validations[types.INVALID] = isInvalid;
+  validations[types.EQUILATERAL] = isEquilateral;
+  validations[types.ISOSCELES] = isIsosceles;
+  validations[types.RIGHT] = isRightAngled;
+  validations[types.SCALENE] = isScalene;
+  validations[types.PYTHAGOREAN] = isPythagorean;
+  return validations;
 };
