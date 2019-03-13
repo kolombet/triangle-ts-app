@@ -22,6 +22,14 @@ export const isRightAngled = (sideA, sideB, sideC) => {
   );
 };
 
+export const isPythagorean = (sideA, sideB, sideC) => {
+  const isInteger =
+    Number.isInteger(sideA) &&
+    Number.isInteger(sideB) &&
+    Number.isInteger(sideC);
+  return isInteger && isRightAngled(sideA, sideB, sideC);
+};
+
 export const isInvalid = (sideA, sideB, sideC) => {
   const isInvalid = sideA <= 0 || sideB <= 0 || sideC <= 0;
 

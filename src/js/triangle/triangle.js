@@ -1,10 +1,13 @@
 import * as validations from "./validations";
+import uuidv1 from "uuid";
+import { Random } from "random-js";
 
-const INVALID = "invalid";
-const EQUILATERAL = "equileateral";
-const ISOSCELES = "isosceles";
-const SCALENE = "scalene";
-const RIGHT = "right";
+const INVALID = "INVALID";
+const EQUILATERAL = "EQUILATERAL";
+const ISOSCELES = "ISOSCELES";
+const SCALENE = "SCALENE";
+const RIGHT = "RIGHT";
+const PYTHAGOREAN = "PYTHAGOREAN";
 
 export class Triangle {
   /**
@@ -38,10 +41,22 @@ export class Triangle {
   }
 
   static create(data) {
+    const id = uuidv1();
     data.a = parseInt(data.a);
     data.b = parseInt(data.b);
     data.c = parseInt(data.c);
-    return new Triangle(data.id, data.a, data.b, data.c);
+    return new Triangle(id, data.a, data.b, data.c);
+  }
+
+  static createRandom() {
+    const id = uuidv1();
+    const rand = () => new Random().integer(1, 5);
+    const createRandomTriangle = () => new Triangle(id, rand(), rand(), rand());
+    let triangle = createRandomTriangle();
+    while (triangle.getTypes().indexOf(INVALID) !== -1) {
+      triangle = createRandomTriangle();
+    }
+    return triangle;
   }
 
   getValidations() {
@@ -50,7 +65,8 @@ export class Triangle {
       EQUILATERAL: validations.isEquilateral,
       ISOSCELES: validations.isIsosceles,
       RIGHT: validations.isRightAngled,
-      SCALENE: validations.isScalene
+      SCALENE: validations.isScalene,
+      PYTHAGOREAN: validations.isPythagorean
     };
   }
 

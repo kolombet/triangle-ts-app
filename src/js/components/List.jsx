@@ -13,9 +13,11 @@ const formatTriangleData = triangle =>
 class TrianglesList extends React.PureComponent {
   render() {
     const { triangles } = this.props;
-    console.log("123");
+    const isAnyTriangles = triangles.length > 0;
     return (
       <div>
+        {isAnyTriangles && <h2>Triangles:</h2>}
+
         {triangles.map(triangle => (
           <div data-ts="Board" key={triangle.id}>
             <div data-ts="Panel">{formatTriangleData(triangle)}</div>

@@ -46,7 +46,7 @@ class ConnectedForm extends Component {
     event.preventDefault();
     const { sideA, sideB, sideC } = this.state;
     const id = uuidv1();
-    this.props.addTriangle({ a: sideA, b: sideB, c: sideC });
+    this.props.addTriangle({ a: sideA, b: sideB, c: sideC, id });
     this.setState(this.getInitialState());
   }
 
@@ -92,7 +92,17 @@ class ConnectedForm extends Component {
         </fieldset>
 
         {isError ? (
-          <ErrorMessage />
+          <div>
+            <ErrorMessage />
+            <button
+              disabled="disabled"
+              data-ts="Button"
+              type="submit"
+              className="ts-primary"
+            >
+              ADD TRIANGLE
+            </button>
+          </div>
         ) : (
           <button data-ts="Button" type="submit" className="ts-primary">
             ADD TRIANGLE
