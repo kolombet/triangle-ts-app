@@ -33,12 +33,12 @@ export const isPythagorean = (sideA, sideB, sideC) => {
 };
 
 export const isInvalid = (sideA, sideB, sideC) => {
-  const isInvalid = sideA <= 0 || sideB <= 0 || sideC <= 0;
+  const isNegativeSided = sideA <= 0 || sideB <= 0 || sideC <= 0;
 
   const isImpossible =
     sideA >= sideB + sideC || sideC >= sideB + sideA || sideB >= sideA + sideC;
 
-  return isInvalid || isImpossible;
+  return isNegativeSided || isImpossible;
 };
 
 export const getValidations = () => {
