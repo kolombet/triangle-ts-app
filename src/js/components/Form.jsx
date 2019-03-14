@@ -5,33 +5,12 @@ import { addTriangle } from "../actions/index";
 import { isInvalid } from "../triangle/validations";
 import Button from "./Button";
 import ErrorMessage from "./ErrorMessage";
+import TriangleSideInput from "./TriangleSideInput";
 
 function mapDispatchToProps(dispatch) {
   return {
     addTriangle: payload => dispatch(addTriangle(payload))
   };
-}
-
-class TriangleSideInput extends React.PureComponent {
-  render() {
-    const isError = this.props.val < 0;
-    return (
-      <label>
-        <span>{this.props.label}</span>
-        <input
-          required
-          type="number"
-          className="form-control"
-          id={this.props.id}
-          value={this.props.val}
-          onChange={this.props.onValueChange}
-        />
-        {isError && (
-          <ErrorMessage title="Triangle sides size must be positive" />
-        )}
-      </label>
-    );
-  }
 }
 
 class AddTriangleForm extends Component {
