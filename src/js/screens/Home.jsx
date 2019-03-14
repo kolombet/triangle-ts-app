@@ -2,6 +2,7 @@ import React from "react";
 import TrianglesList from "../components/TrianglesList";
 import Form from "./Form";
 import ControlBar from "../components/ControlBar";
+import ContentPanel from "../components/ContentPanel";
 import Board from "../components/Board";
 import { connect } from "react-redux";
 import {
@@ -26,7 +27,7 @@ class HomeScreen extends React.PureComponent {
   render() {
     const isAnyTriangles = this.props.triangles.length > 0;
     return (
-      <div>
+      <ContentPanel>
         <Board>
           <h2>Add a new triangle</h2>
           <Form
@@ -40,7 +41,7 @@ class HomeScreen extends React.PureComponent {
             <TrianglesList triangles={this.props.triangles} />
           </Board>
         )}
-      </div>
+      </ContentPanel>
     );
   }
 }
