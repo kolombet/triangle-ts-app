@@ -29,8 +29,7 @@ class Form extends Component {
   }
 
   handleChange(event) {
-    const value = parseFloat(event.target.value);
-    this.setState({ [event.target.id]: value });
+    this.setState({ [event.target.id]: event.target.value });
   }
 
   handleSubmit() {
@@ -48,7 +47,9 @@ class Form extends Component {
     const { sideA, sideB, sideC } = this.state;
     const isEmpty = value => isNaN(value) || value === "";
     const isAnyFieldEmpty = [sideA, sideB, sideC].filter(isEmpty).length > 0;
-    const isError = !isAnyFieldEmpty && isInvalid(sideA, sideB, sideC);
+    const isError =
+      !isAnyFieldEmpty &&
+      isInvalid(parseFloat(sideA), parseFloat(sideB), parseFloat(sideC));
     return (
       <div>
         <form data-ts="Form" onSubmit={this.handleSubmit}>
@@ -79,7 +80,11 @@ class Form extends Component {
             />
           )}
         </form>
-        <Button disabled={isAnyFieldEmpty || isError} title="Add Triangle" />
+        <Button
+          disabled={isAnyFieldEmpty || isError}
+          title="Add Triangle"
+          onClick={this.handleSubmit}
+        />
         <Button
           onClick={this.handleRandomClick}
           title="Create random triangle"

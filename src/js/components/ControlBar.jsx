@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class ControlBar extends PureComponent {
   static propTypes = {
-    triangles: PropTypes.func.isRequired
+    clearTriangles: PropTypes.func.isRequired
   };
 
   constructor() {

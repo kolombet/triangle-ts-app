@@ -11,7 +11,8 @@ export default class TriangleSideInput extends PureComponent {
   };
 
   render() {
-    const isError = parseInt(this.props.size) < 0;
+    const isError = parseInt(this.props.size) <= 0;
+    console.log("iserror " + isError);
     return (
       <label>
         <span>{this.props.label}</span>
