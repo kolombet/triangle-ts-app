@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import uuidv1 from "uuid";
 import { isInvalid } from "../triangle/validations";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
@@ -34,8 +33,11 @@ class Form extends Component {
 
   handleSubmit() {
     const { sideA, sideB, sideC } = this.state;
-    const id = uuidv1();
-    this.props.addTriangle({ a: sideA, b: sideB, c: sideC, id });
+    this.props.addTriangle({
+      a: parseFloat(sideA),
+      b: parseFloat(sideB),
+      c: parseFloat(sideC)
+    });
     this.setState(this.getInitialState());
   }
 

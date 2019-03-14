@@ -2,6 +2,7 @@ import { getValidations } from "./validations";
 import uuidv1 from "uuid";
 import { Random } from "random-js";
 import * as types from "./triangleTypes";
+import type from "type-of";
 
 export class Triangle {
   /**
@@ -11,6 +12,15 @@ export class Triangle {
    * @param {Number} sideC
    */
   constructor(id, sideA, sideB, sideC) {
+    if (
+      type(id) !== "string" ||
+      type(sideA) !== "number" ||
+      type(sideB) !== "number" ||
+      type(sideC) !== "number"
+    ) {
+      throw new Error("incorrect argument types");
+    }
+
     const _private = {
       id,
       sideA,
@@ -35,25 +45,21 @@ export class Triangle {
   }
 
   /**
-  * Creates triangle from object 
-  * @param {Object} data 
-  * @param {Number} data.a
-  * @param {Number} data.b
-  * @param {Number} data.c
-  * @returns {Triangle} - Triangle instance with unique id.
-  */
+   * Creates triangle from object
+   * @param {Object} data
+   * @param {Number} data.a
+   * @param {Number} data.b
+   * @param {Number} data.c
+   * @returns {Triangle} - Triangle instance with unique id.
+   */
   static create(data) {
-    const id = uuidv1();
-    data.a = parseInt(data.a);
-    data.b = parseInt(data.b);
-    data.c = parseInt(data.c);
-    return new Triangle(id, data.a, data.b, data.c);
+    return new Triangle(uuidv1(), data.a, data.b, data.c);
   }
 
   /**
-  * Creates triangle with sides of random integer size from 1 to 5
-  * @returns {Triangle} - Triangle instance with unique id.
-  */
+   * Creates triangle with sides of random integer size from 1 to 5
+   * @returns {Triangle} - Triangle instance with unique id.
+   */
   static createRandom() {
     const id = uuidv1();
     const rand = () => new Random().integer(1, 5);
@@ -66,9 +72,9 @@ export class Triangle {
   }
 
   /**
-  * Finds triangle type by matching triangle sides with type validation functions. 
-  * @returns {Array} - All passed validations.
-  */
+   * Finds triangle type by matching triangle sides with type validation functions.
+   * @returns {Array} - All passed validations.
+   */
   getTypes() {
     const validations = getValidations();
     const keys = Object.keys(validations);
@@ -79,9 +85,9 @@ export class Triangle {
   }
 
   /**
-  * Returns triangle sides data and it's type
-  * @returns {Object} - plain triangle data for view rendering.
-  */
+   * Returns triangle sides data and it's type
+   * @returns {Object} - plain triangle data for view rendering.
+   */
   getData() {
     const data = this.get;
     const types = this.getTypes();
