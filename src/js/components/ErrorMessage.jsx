@@ -1,6 +1,13 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+
 
 export default class ErrorMessage extends PureComponent {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string
+  }
+
   render() {
     return (
       <dl className="ts-errors">

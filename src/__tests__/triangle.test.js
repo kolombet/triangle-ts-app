@@ -26,7 +26,7 @@ describe("Valid triangle", () => {
   });
   
   describe("Triangle class", () => {
-    it("It's valid, if sides can form triangle", () => {
+    it("It's valid, if triangle {3, 4, 5} is scalene right and pythagorean", () => {
       const triangle = Triangle.create({a: 3, b: 4, c:5});
       let triangleTypes = triangle.getTypes();
       let scalene = triangleTypes.indexOf(types.SCALENE) >= 0;
@@ -34,6 +34,26 @@ describe("Valid triangle", () => {
       let right = triangleTypes.indexOf(types.RIGHT) >= 0;
       expect(scalene && pythagorean && right).toBe(true);
     });
+
+    it("It's incorrect, if triangle {3, 4, 5} is invalid, equilateral or isosceles", () => {
+        const triangle = Triangle.create({a: 3, b: 4, c:5});
+        let triangleTypes = triangle.getTypes();
+        let invalid = triangleTypes.indexOf(types.INVALID) >= 0;
+        let equilateral = triangleTypes.indexOf(types.EQUILATERAL) >= 0;
+        let isosceles = triangleTypes.indexOf(types.ISOSCELES) >= 0;
+        expect(!invalid && !equilateral && !isosceles).toBe(true);
+      });
+
+    it("It's invalid, if triangle sides are impossible", () => {
+        const triangle = Triangle.create({a: 1, b: 2, c:9});
+        let triangleTypes = triangle.getTypes();
+        
+        let invalid = triangleTypes.indexOf(types.INVALID) >= 0;
+
+        let equilateral = triangleTypes.indexOf(types.EQUILATERAL) >= 0;
+        let isosceles = triangleTypes.indexOf(types.ISOSCELES) >= 0;
+        expect(invalid).toBe(true);
+      });
   });
   
   describe("Isosceles triangle", () => {
