@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board component Board component matches the snapshot 1`] = `
+<div
+  data-ts="Board"
+>
+  <div
+    data-ts="Panel"
+  >
+    test
+  </div>
+</div>
+`;
+
+exports[`Button component Disabled button matches the snapshot 1`] = `
+<button
+  className="ts-primary"
+  data-ts="Button"
+  disabled="disabled"
+  type="submit"
+>
+  test
+</button>
+`;
+
+exports[`Button component Enabled button matches the snapshot 1`] = `
+<button
+  className="ts-primary"
+  data-ts="Button"
+  disabled=""
+  type="submit"
+>
+  test
+</button>
+`;
+
+exports[`Error message component Error message matches the snapshot 1`] = `
+<dl
+  className="ts-errors"
+>
+  <dt>
+    title
+  </dt>
+  <dd>
+    description
+  </dd>
+</dl>
+`;
+
+exports[`Triangle side input component Triangle side input matches the snapshot 1`] = `
+<label>
+  <span>
+    Side:
+  </span>
+  <input
+    className="form-control"
+    id="side"
+    required={true}
+    type="number"
+    value={5}
+  />
+</label>
+`;
