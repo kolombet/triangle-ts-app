@@ -1,6 +1,7 @@
 # Triangle app
 
-A web app, to check by triangle sides, is it equilateral, isosceles or scalene.
+A web app, which helps to determine the type of triangle. Program checks type, by the user inputted triangle sides. Available type checks: equilateral, isosceles, scalene, right-sided and Pythagorean.
+
 Features:
 
 - Check triangle validity on input
@@ -10,13 +11,18 @@ Features:
 
 ## About stack
 
-The app is built on top of `create-react-app` template.
+The app is built on top of 'create-react-app' template.
 It is using:
 
+- `webpack` - js bundling
 - `React` - view rendering
 - `Redux` - state management
 - `Styled components` - CSS in JS
 - `Jest` - test runner
+
+## Demo
+
+[(Click here to watch demo in browser)](https://build-gzqpyfidcn.now.sh)
 
 ## How to run
 

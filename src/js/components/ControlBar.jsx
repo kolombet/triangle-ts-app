@@ -21,9 +21,6 @@ class ControlBar extends Component {
     super();
     this.handleRandomClick = this.handleRandomClick.bind(this);
     this.handleClearClick = this.handleClearClick.bind(this);
-    setTimeout(() => {
-      this.props.addRandomTriangle();
-    }, 100);
   }
 
   handleRandomClick(event) {

@@ -74,7 +74,7 @@ class AddTriangleForm extends Component {
             description="Entered sides do not form a real triangle"
           />
         )}
-        <Button disabled={isError} title="Add Triangle" />
+        <Button disabled={isEmpty || isError} title="Add Triangle" />
       </form>
     );
   }
