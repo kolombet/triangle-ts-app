@@ -36,7 +36,7 @@ class ControlBar extends Component {
       <HorizontalLayout>
         <Button
           onClick={this.handleRandomClick}
-          title="Create randome triangle"
+          title="Create random triangle"
         />
         <Button onClick={this.handleClearClick} title="Clear list" />
       </HorizontalLayout>
