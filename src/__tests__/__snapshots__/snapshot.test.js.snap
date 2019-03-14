@@ -57,7 +57,6 @@ exports[`Triangle side input component Triangle side input matches the snapshot 
     id="side"
     required={true}
     type="number"
-    value={5}
   />
 </label>
 `;
