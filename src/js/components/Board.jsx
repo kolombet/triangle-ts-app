@@ -1,6 +1,6 @@
-import React from "react";
+import React, { PureComponent } from "react";
 
-export default class Board extends React.PureComponent {
+export default class Board extends PureComponent {
   render() {
     return (
       <div data-ts="Board">

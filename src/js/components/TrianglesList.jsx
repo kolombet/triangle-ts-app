@@ -1,20 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import Board from "./Board";
+import PropTypes from "prop-types";
 
 const TriangleSide = styled.p`
   margin-bottom: 5px;
   color: #4f6b77;
 `;
 
-const mapStateToProps = state => {
-  return { triangles: state.triangles };
-};
-
 const formatTypes = types => types.join(", ").toLowerCase();
 
-class TrianglesList extends React.PureComponent {
+class TrianglesList extends PureComponent {
+  static propTypes = {
+    triangles: PropTypes.array.isRequired
+  };
+
   render() {
     const { triangles } = this.props;
     const isAnyTriangles = triangles.length > 0;
@@ -42,5 +42,4 @@ class TrianglesList extends React.PureComponent {
   }
 }
 
-const List = connect(mapStateToProps)(TrianglesList);
-export default List;
+export default TrianglesList;
