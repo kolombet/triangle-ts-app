@@ -10,26 +10,27 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  if (action.type === ADD_TRIANGLE) {
-    const triangle = Triangle.create(action.payload);
-    const data = Object.assign({}, state, {
-      triangles: state.triangles.concat(triangle.getData())
-    });
-    return data;
+  switch (action.type) {
+    case ADD_TRIANGLE:
+      return {
+        ...state,
+        triangles: [
+          Triangle.create(action.payload).getData(),
+          ...state.triangles
+        ]
+      };
+    case CLEAR_TRIANGLES:
+      return {
+        ...state,
+        triangles: []
+      };
+    case ADD_RANDOM_TRIANGLE:
+      return {
+        ...state,
+        triangles: [Triangle.createRandom().getData(), ...state.triangles]
+      };
+    default:
+      return state;
   }
-  if (action.type === CLEAR_TRIANGLES) {
-    const data = Object.assign({}, state, {
-      triangles: []
-    });
-    return data;
-  }
-  if (action.type === ADD_RANDOM_TRIANGLE) {
-    const triangle = Triangle.createRandom();
-    const data = Object.assign({}, state, {
-      triangles: state.triangles.concat(triangle.getData())
-    });
-    return data;
-  }
-  return state;
 }
 export default rootReducer;
