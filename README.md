@@ -22,7 +22,7 @@ It is using:
 
 ## Demo
 
-[(Click here to watch demo in browser)](https://build-gzqpyfidcn.now.sh)
+[(Click here to watch demo in browser)](https://build-pzfwggxerb.now.sh/)
 
 ## How to run
 
