@@ -2,7 +2,11 @@
 
 A web app, which helps to determine the type of triangle. Program checks type, by the user inputted triangle sides. Available type checks: equilateral, isosceles, scalene, right-sided and Pythagorean.
 
-Features:
+## Demo
+
+[(Click the link to watch demo build in browser https://build-zpwwjzecqa.now.s)](https://build-zpwwjzecqa.now.sh)
+
+## Features
 
 - Check triangle validity on input
 - Keeps triangle history
@@ -19,10 +23,6 @@ It is using:
 - `Redux` - state management
 - `Styled components` - CSS in JS
 - `Jest` - test runner
-
-## Demo
-
-[(Click here to watch demo in browser)](https://build-pzfwggxerb.now.sh/)
 
 ## How to run
 
