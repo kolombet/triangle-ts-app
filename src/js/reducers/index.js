@@ -1,5 +1,6 @@
 import {
   ADD_TRIANGLE,
+  REMOVE_TRIANGLE,
   CLEAR_TRIANGLES,
   ADD_RANDOM_TRIANGLE
 } from "../constants/action-types";
@@ -19,6 +20,11 @@ function rootReducer(state = initialState, action) {
           ...state.triangles
         ]
       };
+    case REMOVE_TRIANGLE: {
+      return {
+        ...state
+      };
+    }
     case CLEAR_TRIANGLES:
       return {
         ...state,
