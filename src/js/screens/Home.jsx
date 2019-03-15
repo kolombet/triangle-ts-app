@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
   return {
     addTriangle: payload => dispatch(addTriangle(payload)),
-    removeTriangle: id => dispatch(removeTriangle(id)),
+    removeTriangle: payload => dispatch(removeTriangle(payload)),
     addRandomTriangle: () => dispatch(addRandomTriangle()),
     clearTriangles: () => dispatch(clearTriangles())
   };

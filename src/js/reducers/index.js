@@ -22,7 +22,8 @@ function rootReducer(state = initialState, action) {
       };
     case REMOVE_TRIANGLE: {
       return {
-        ...state
+        ...state, 
+        triangles: state.triangles.filter(item => item.id !== action.payload)
       };
     }
     case CLEAR_TRIANGLES:

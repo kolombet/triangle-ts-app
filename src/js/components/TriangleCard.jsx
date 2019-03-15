@@ -30,14 +30,9 @@ export default class TriangleCard extends PureComponent {
     removeTriangle: PropTypes.func
   };
 
-  constructor() {
-    super();
-    this.handleRemoveClick.bind(this);
-  }
-
-  handleRemoveClick() {
-    console.log("remove click");
-    this.props.removeTriangle(this.props.triangle.id);
+  handleRemoveClick = () => {
+    const id = this.props.triangle.id;
+    this.props.removeTriangle(id);
   }
 
   render() {
@@ -56,7 +51,7 @@ export default class TriangleCard extends PureComponent {
               {formatTypes(triangle.types)}
             </Info>
           </Left>
-          {/* <Button title="Remove" onClick={this.handleRemoveClick} /> */}
+          <Button title="Remove" onClick={this.handleRemoveClick} />
         </Horizontal>
       </Board>
     );

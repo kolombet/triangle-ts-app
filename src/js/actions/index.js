@@ -9,8 +9,8 @@ export function addTriangle(payload) {
   return { type: ADD_TRIANGLE, payload };
 }
 
-export function removeTriangle(id) {
-  return { type: REMOVE_TRIANGLE, id };
+export function removeTriangle(payload) {
+  return { type: REMOVE_TRIANGLE, payload };
 }
 
 export function addRandomTriangle() {
