@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import styled from "styled-components";
 import Board from "./Board";
 import PropTypes from "prop-types";
+import Button from "./Button";
 
 const Info = styled.p`
   margin-bottom: 5px;
