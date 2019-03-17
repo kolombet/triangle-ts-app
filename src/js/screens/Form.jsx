@@ -59,26 +59,26 @@ class Form extends Component {
             <TriangleSideInput
               label="Side A:"
               id="sideA"
-              size={sideA}
+              length={sideA}
               onValueChange={this.handleChange}
             />
             <TriangleSideInput
               label="Side B:"
               id="sideB"
-              size={sideB}
+              length={sideB}
               onValueChange={this.handleChange}
             />
             <TriangleSideInput
               label="Side C:"
               id="sideC"
-              size={sideC}
+              length={sideC}
               onValueChange={this.handleChange}
             />
           </fieldset>
           {isError && (
             <ErrorMessage
               title="Triangle is invalid"
-              description="Entered sides do not form a real triangle"
+              description="Entered sides do not form a valid triangle"
             />
           )}
         </form>

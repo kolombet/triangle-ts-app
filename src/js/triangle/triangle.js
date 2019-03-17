@@ -45,20 +45,20 @@ export class Triangle {
   }
 
   /**
-   * Creates triangle from object
+   * Creates triangle from object.
    * @param {Object} data
    * @param {Number} data.a
    * @param {Number} data.b
    * @param {Number} data.c
-   * @returns {Triangle} - Triangle instance with unique id.
+   * @returns {Triangle} - Triangle instance with unique ID.
    */
   static create(data) {
     return new Triangle(uuidv1(), data.a, data.b, data.c);
   }
 
   /**
-   * Creates triangle with sides of random integer size from 1 to 5
-   * @returns {Triangle} - Triangle instance with unique id.
+   * Creates triangle with sides of random integer length from 1 to 5.
+   * @returns {Triangle} - Triangle instance with unique ID.
    */
   static createRandom() {
     const id = uuidv1();
@@ -85,8 +85,8 @@ export class Triangle {
   }
 
   /**
-   * Returns triangle sides data and it's type
-   * @returns {Object} - plain triangle data for view rendering.
+   * Returns triangle sides data and its type
+   * @returns {Object} - Plain triangle data for view rendering.
    */
   getData() {
     const data = this.get;

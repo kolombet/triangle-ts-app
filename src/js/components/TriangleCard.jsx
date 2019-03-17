@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import Board from "./Board";
-import Button from "./Button";
 import PropTypes from "prop-types";
 
 const Info = styled.p`

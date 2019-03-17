@@ -1,6 +1,6 @@
 # Triangle app
 
-A web app, which helps to determine the type of triangle. Program checks type, by the user inputted triangle sides. Available type checks: equilateral, isosceles, scalene, right-sided and Pythagorean.
+This is a web application which helps to determine the type of triangle. The program does it by the user input of triangle sides length. The following sorts of triangles are available: equilateral, isosceles, scalene, right-angled and Pythagorean.
 
 ## Demo
 
@@ -8,7 +8,7 @@ A web app, which helps to determine the type of triangle. Program checks type, b
 
 ## Features
 
-- Check triangle validity on input
+- Checks triangle validity on input
 - Keeps triangle history
 - Ability to quickly add random triangles
 - Mobile friendly UI
@@ -16,13 +16,14 @@ A web app, which helps to determine the type of triangle. Program checks type, b
 ## About stack
 
 The app is built on top of 'create-react-app' template.
-It is using:
+It using:
 
-- `webpack` - js bundling
-- `React` - view rendering
-- `Redux` - state management
+- `Webpack` - for js bundling
+- `React` - for view rendering
+- `Redux` - for state management
 - `Styled components` - CSS in JS
-- `Jest` - test runner
+- `Jest` - as a test runner
+
 
 ## How to run
 
